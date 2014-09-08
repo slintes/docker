@@ -1,5 +1,7 @@
 FROM slintes/java8
 
+# pushed to docker as slintes/ace
+
 MAINTAINER Marc Sluiter <marc.sluiter@luminis.eu>
 
 # install ace

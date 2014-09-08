@@ -1,5 +1,7 @@
 FROM slintes/ubuntu
 
+# pushed to docker as slintes/java8
+
 MAINTAINER Marc Sluiter <marc.sluiter@luminis.eu>
 
 # install java 8

@@ -1,5 +1,7 @@
 FROM ubuntu
 
+# pushed to docker as slintes/ubuntu
+
 MAINTAINER Marc Sluiter <marc.sluiter@luminis.eu>
 
 ENV DEBIAN_FRONTEND noninteractive
