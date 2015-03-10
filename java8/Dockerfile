@@ -1,15 +1,34 @@
-FROM slintes/ubuntu
-
 # pushed to docker as slintes/java8
+
+# https://github.com/progrium/busybox
+FROM progrium/busybox 
 
 MAINTAINER Marc Sluiter <marc.sluiter@luminis.eu>
 
-# install java 8
-RUN apt-get -y update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes software-properties-common python-software-properties
-RUN add-apt-repository -y ppa:webupd8team/java
-RUN apt-get -y update
-RUN /bin/echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install oracle-java8-installer oracle-java8-set-default
+# install common tools
+RUN opkg-install curl ca-certificates
 
-CMD /bin/bash
+# set some env variables
+ENV JAVA_VERSION_MAJOR 8
+ENV JAVA_VERSION_MINOR 40
+ENV JAVA_VERSION_BUILD b25
+
+ENV JAVA_VERSION ${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}
+ENV JAVA_HOME /usr/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR}
+
+# install Java
+RUN curl \
+  --location \
+  --cacert /etc/ssl/certs/GeoTrust_Global_CA.crt \
+  --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
+  "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}-${JAVA_VERSION_BUILD}/jdk-${JAVA_VERSION}-linux-x64.tar.gz" \
+    | gunzip \
+    | tar x -C /usr/ \
+    && rm -rf $JAVA_HOME/src.zip $JAVA_HOME/javafx-src.zip $JAVA_HOME/man
+
+# update PATH
+ENV PATH $JAVA_HOME/bin:$PATH
+
+# set default entrypoint and command
+CMD [ "java" "-version" ]
+
