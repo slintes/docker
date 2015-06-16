@@ -1,6 +1,6 @@
 # pushed to docker as slintes/dev
 
-FROM slintes/java8:8u40
+FROM slintes/jdk8
 
 MAINTAINER Marc Sluiter <marc.sluiter@luminis.eu>
 

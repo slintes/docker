@@ -1,4 +1,4 @@
-FROM slintes/java8
+FROM slintes/jre8
 
 # pushed to docker as slintes/ace
 
