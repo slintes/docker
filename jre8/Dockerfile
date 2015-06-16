@@ -6,7 +6,7 @@ FROM progrium/busybox
 MAINTAINER Marc Sluiter <marc.sluiter@luminis.eu>
 
 # install common tools
-RUN opkg-install curl ca-certificates
+RUN opkg-install curl ca-certificates bash
 
 # set some env variables
 ENV JAVA_VERSION_MAJOR 8

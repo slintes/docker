@@ -1,4 +1,4 @@
-# pushed to docker as slintes/jdk8
+# pushed to docker as slintes/java8
 
 # https://github.com/progrium/busybox
 FROM progrium/busybox 
@@ -6,12 +6,12 @@ FROM progrium/busybox
 MAINTAINER Marc Sluiter <marc.sluiter@luminis.eu>
 
 # install common tools
-RUN opkg-install curl ca-certificates
+RUN opkg-install curl ca-certificates bash
 
 # set some env variables
 ENV JAVA_VERSION_MAJOR 8
-ENV JAVA_VERSION_MINOR 45
-ENV JAVA_VERSION_BUILD b14
+ENV JAVA_VERSION_MINOR 40
+ENV JAVA_VERSION_BUILD b25
 
 ENV JAVA_VERSION ${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}
 ENV JAVA_HOME /usr/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR}
