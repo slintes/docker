@@ -15,6 +15,4 @@ RUN wget "https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts
     /usr/glibc/usr/bin/ldconfig /lib /usr/glibc/usr/lib && \
     echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
     wget "http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh" && \
-    bash ./Miniconda-latest-Linux-x86_64.sh -b -p /usr/local/miniconda && \
-    rm ./Miniconda-latest-Linux-x86_64.sh && \
     rm /var/cache/apk/*
