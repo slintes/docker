@@ -1,12 +1,9 @@
 # pushed to docker as slintes/jre8
 
 # https://github.com/gliderlabs/docker-alpine
-FROM gliderlabs/alpine:3.2
+FROM slintes/alpine-glibc
 
 MAINTAINER Marc Sluiter <marc.sluiter@luminis.eu>
-
-# install common tools
-RUN apk --update add curl ca-certificates bash
 
 # set some env variables
 ENV JAVA_VERSION_MAJOR 8
@@ -30,5 +27,5 @@ RUN curl \
 ENV PATH $JAVA_HOME/bin:$PATH
 
 # set default entrypoint and command
-CMD [ "java" "-version" ]
+CMD [ "java", "-version" ]
 
