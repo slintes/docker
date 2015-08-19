@@ -11,6 +11,6 @@ RUN apk --update add curl
 ENV ETCD_VERSION v2.0.13
 RUN mkdir /download && cd /download && (curl -kL https://github.com/coreos/etcd/releases/download/$ETCD_VERSION/etcd-$ETCD_VERSION-linux-amd64.tar.gz | gunzip | tar -xf -) && cp */etcd /usr/bin && cd / && rm -rf /download
 
-ENTRYPOINT /bin/sh -c '/usr/bin/etcd
+ENTRYPOINT /bin/sh -c '/usr/bin/etcd'
 
 EXPOSE 2379 2380 4001 7001
