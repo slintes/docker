@@ -11,6 +11,10 @@ RUN apk --update add curl
 ENV ETCD_INSTALL_VERSION v2.0.13
 RUN mkdir /download && cd /download && (curl -kL https://github.com/coreos/etcd/releases/download/$ETCD_INSTALL_VERSION/etcd-$ETCD_INSTALL_VERSION-linux-amd64.tar.gz | gunzip | tar -xf -) && cp */etcd /usr/bin && cd / && rm -rf /download
 
+# listen on all interfaces
+ENV ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379,http://0.0.0.0:4001
+ENV ETCD_ADVERTISE_CLIENT_URLS=http://localhost:2379
+
 ENTRYPOINT /bin/sh -c '/usr/bin/etcd'
 
 EXPOSE 2379 2380 4001 7001
