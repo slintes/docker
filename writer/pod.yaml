@@ -5,4 +5,4 @@ metadata:
 spec:
   containers:
   - name: writer
-    image: slintes/writer:latest
+    image: docker.io/slintes/writer:latest
